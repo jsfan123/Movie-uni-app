@@ -1,0 +1,48 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				// 如果 h5 节，默认会使用 app-plus 下的配置。
+				// 配置了 h5 节点，则会覆盖 app-plus 下的配置。
+				"app-plus": {
+					"titleNView": false //禁用原生导航栏,小程序不能禁用
+				}
+			}
+		}, { // 搜索页面
+			"path": "pages/search/search",
+			"style": {}
+		}, {
+			"path": "pages/me/me",
+			"style": {}
+		}
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "电影预告",
+		"navigationBarBackgroundColor": "#F8F8F8", // 导航栏背景色
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#222222",
+		"selectedColor": "#FFA638",
+		"borderStyle": "black",
+		"backgroundColor": "#FFFFFF",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/tabBarIcon/others_home.png",
+			"text": "首页",
+			"selectedIconPath": "static/tabBarIcon/index_home_active.png"
+		}, {
+			"pagePath": "pages/search/search",
+			"iconPath": "static/tabBarIcon/others_info.png",
+			"text": "搜索",
+			"selectedIconPath": "static/tabBarIcon/news_info_active.png"
+		}, {
+			"pagePath": "pages/me/me",
+			"iconPath": "static/tabBarIcon/others_self.png",
+			"text": "我的",
+			"selectedIconPath": "static/tabBarIcon/pc_self_active.png"
+		}]
+	}
+}
