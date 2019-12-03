@@ -13,11 +13,11 @@ const MovieSchema = new mongoose.Schema({
         type:String
     },
     // 电影 封面
-    poster:{
+    cover:{
         type:String
     },
     // 电影 预告片封面
-    cover:{
+    poster:{
         type:String
     },
     // 电影 预告片
