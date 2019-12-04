@@ -178,17 +178,92 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
   data: function data() {
     return {
       title: 'Hello',
       bannerList: [], // 轮播图 数据
       hotSuperHeroList: [], // 热门超英 数据
-      hotTrailerList: [] // 热门预告 数据
+      hotTrailerList: [], // 热门预告 数据
+      guessULikeList: [], // 猜你喜欢 数据
+      animationData: {}, // 动画对象
+      animationDataArr: [{}, {}, {}, {}, {}] // 动画数组
     };
+  },
+  onUnload: function onUnload() {// 页面卸载，触发
+    // 重置 动画对象和数组
+    this.animationData = {};
+    this.animationDataArr = [{}, {}, {}, {}, {}];
   },
   onLoad: function onLoad() {// 页面加载，只会执行一次
     var _this = this;
+
+
+    // 在页面创建的时候，创建一个临时动画对象
+    this.animation = uni.createAnimation();
 
     // 获取 轮播图 数据
     _this.fetchBanner();
@@ -206,6 +281,14 @@ __webpack_require__.r(__webpack_exports__);
         _this.hotTrailerList = res.data.data;
       }
     });
+
+    // 获取 猜你喜欢 数据
+    _this.fetchGuessData();
+  },
+  // 页面 下拉 刷新
+  onPullDownRefresh: function onPullDownRefresh() {
+    // 下拉刷新时，重新获取 猜你喜欢 的数据
+    this.fetchGuessData();
   },
   methods: {
     // 获取 首页轮播图 数据
@@ -223,6 +306,7 @@ __webpack_require__.r(__webpack_exports__);
           }
         } });
 
+
     },
     // 获取 热门超英/预告 数据
     fetchHotData: function fetchHotData(reqUrl, type, callback) {
@@ -236,6 +320,54 @@ __webpack_require__.r(__webpack_exports__);
           callback(res);
 
         } });
+
+    },
+    // 获取 猜你喜欢 数据
+    fetchGuessData: function fetchGuessData() {var _this3 = this;
+      // uni.showLoading({
+      // 	mask: true
+      // });
+      uni.request({
+        url: this.baseURL + '/index/guess/list', //仅为示例，并非真实接口地址。
+        method: "GET",
+        success: function success(res) {
+          if (res.data.statusCode == 200) {
+            console.log(res.data.data);
+            _this3.guessULikeList = res.data.data;
+          }
+
+        },
+        complete: function complete() {// 加载完数据的回调
+          setTimeout(function () {// 延迟 下拉刷新动画
+            uni.stopPullDownRefresh(); // 停止 下拉刷新
+            // uni.hideLoading()
+          }, 1000);
+        } });
+
+    },
+    // 实现点赞动画效果
+    praiseMe: function praiseMe(e) {
+      // 拿到自定义的组件 属性值，注意使用 dataset.属性名，获取值，属性名只能写小写。
+      var gIndex = e.currentTarget.dataset.gindex;
+      console.log(gIndex);
+      // 构建动画数据，并且通过step 来表示这段动画的完成
+      this.animation.translateY(-56).opacity(1).step({
+        duration: 400 // 动画持续时间，400ms
+      });
+      // 导出动画数据到 view 组件，实现组价你的动画效果
+      // this.animationData = this.animation.export()
+      this.animationData = this.animation;
+      this.animationDataArr[gIndex] = this.animationData.export();
+
+      // 动画执行600ms 之后，还原到之前的位置，
+      setTimeout(function () {
+        this.animation.translateY(0).opacity(0).step({
+          duration: 0 // 动画持续时间，0ms
+        });
+        // this.animationData = this.animation.export()
+        this.animationData = this.animation;
+        this.animationDataArr[gIndex] = this.animationData.export();
+      }.bind(this), 600);
 
     } },
 

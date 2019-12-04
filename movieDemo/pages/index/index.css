@@ -112,14 +112,18 @@
 }
 
 .movie-info,
-.movie-actor {
+.movie-releaseDate {
 	color: #808080;
 	font-size: 14px;
 	margin-top: 20upx;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:2;
 }
-
 /* 赞一下 */
-.movie-star {
+.movie-praise {
 	width: 140upx;
 	display: flex;
 	flex-direction: column;

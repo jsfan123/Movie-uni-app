@@ -37,6 +37,27 @@ module.exports = app => {
         res.send(result)
     })
 
+
+    // 获取 猜你喜欢的 电影预告数据,每次请求都是不一样的数据
+    router.get('/index/guess/list', async(req,res)=>{
+        console.log(req.query)
+        let result = new ResultInfo()
+        try {
+            // 随机 查询五条数据
+            let model = await Movie.aggregate([{
+                $sample:{size:5}
+            }])
+            result.data = model
+            result.message = "查询成功"
+        } catch (e) {
+            console.log(e)
+            result.message = "服务器异常"
+            result.statusCode = 500
+        }
+        res.send(result)
+    })
+
+
     app.use('/web/api', router)
 
 }

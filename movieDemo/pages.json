@@ -7,11 +7,14 @@
 				// 配置了 h5 节点，则会覆盖 app-plus 下的配置。
 				"app-plus": {
 					"titleNView": false //禁用原生导航栏,小程序不能禁用
-				}
+				},
+				"enablePullDownRefresh":true // 开启下拉刷新
 			}
 		}, { // 搜索页面
 			"path": "pages/search/search",
-			"style": {}
+			"style": {
+				"navigationBarTitleText": "搜索预告片"
+			}
 		}, {
 			"path": "pages/me/me",
 			"style": {}

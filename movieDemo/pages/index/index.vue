@@ -72,28 +72,29 @@
 		</view>
 		
 		<view class="guess-u-like page-block">
-			<view class="single-like-movie">
-				<image :src="`../../static/movie/1.jpg`" class="like-moive"></image>
+			<view class="single-like-movie" v-for="(guess,i) in guessULikeList">
+				<image :src="`../../static/movie/${i+1}.jpg`" class="like-moive"></image>
 				<!-- 影片信息 -->
 				<view class="movie-desc">
 					<view class="movie-title">
-						蝙蝠侠大战超人蝙蝠侠大战超人蝙蝠侠大战超人
+						{{ guess.name }}
 					</view>
 					<!-- 星级 -->
-					<trailerStars innerScope="5.1" showNum="0"></trailerStars>
+					<trailerStars :innerScope="guess.score" showNum="0"></trailerStars>
 					<view class="movie-info">
-						2018 / 美国 / 科幻 动作
+						类型：{{ guess.movieType }}
 					</view>
-					<view class="movie-actor">
-						本·阿弗莱克 / 亨利·卡维尔 / 艾米·亚当斯 / 盖尔·加朵
+					<view class="movie-releaseDate">
+						上映时间：{{ guess.releaseDate }}
 					</view>
 				</view>
-				<view class="movie-star" @click="praiseMe">
+				<view class="movie-praise" :data-gIndex='i' @click="praiseMe">
 					<image src="../../static/icons/点赞.png" class="praise-ico"></image>
 					<view class="praise-me">
 						点赞
 					</view>
-					<view :animation="animationData" class="praise-me animation-opacity">
+					<view :animation="animationDataArr[i]" class="praise-me animation-opacity">
+					<!-- <view :animation="animationData" class="praise-me animation-opacity"> -->
 						+1
 					</view>
 				</view>
@@ -114,20 +115,22 @@
 				bannerList: [], // 轮播图 数据
 				hotSuperHeroList: [], // 热门超英 数据
 				hotTrailerList: [], // 热门预告 数据
+				guessULikeList: [], // 猜你喜欢 数据
 				animationData: {}, // 动画对象
+				animationDataArr: [{},{},{},{},{}], // 动画数组
 			}
 		},
 		onUnload(){ // 页面卸载，触发
+			// 重置 动画对象和数组
 			this.animationData = {}
+			this.animationDataArr = [{},{},{},{},{}]
 		},
 		onLoad() { // 页面加载，只会执行一次
 			var _this = this
 
 
 			// 在页面创建的时候，创建一个临时动画对象
-			this.animation = uni.createAnimation({
-				
-			})
+			this.animation = uni.createAnimation()
 				
 			// 获取 轮播图 数据
 			_this.fetchBanner()
@@ -145,6 +148,14 @@
 					_this.hotTrailerList = res.data.data
 				}
 			})
+			
+			// 获取 猜你喜欢 数据
+			_this.fetchGuessData()
+		},
+		// 页面 下拉 刷新
+		onPullDownRefresh() {
+			// 下拉刷新时，重新获取 猜你喜欢 的数据
+			this.fetchGuessData()
 		},
 		methods: {
 			// 获取 首页轮播图 数据
@@ -160,7 +171,8 @@
 							console.log(res.data.data);
 							this.bannerList = res.data.data.list
 						}
-					}
+					},
+					
 				});
 			},
 			// 获取 热门超英/预告 数据
@@ -177,21 +189,51 @@
 					}
 				});
 			},
+			// 获取 猜你喜欢 数据
+			fetchGuessData() {
+				// uni.showLoading({
+				// 	mask: true
+				// });
+				uni.request({
+					url: this.baseURL + '/index/guess/list', //仅为示例，并非真实接口地址。
+					method: "GET",
+					success: (res) => {
+						if(res.data.statusCode == 200){
+							console.log(res.data.data)
+							this.guessULikeList = res.data.data
+						}
+			
+					},
+					complete: () => { // 加载完数据的回调
+						setTimeout(function(){ // 延迟 下拉刷新动画
+							uni.stopPullDownRefresh() // 停止 下拉刷新
+							// uni.hideLoading()
+						},1000)
+					}
+				});
+			},
 			// 实现点赞动画效果
-			praiseMe(){
+			praiseMe(e){
+				// 拿到自定义的组件 属性值，注意使用 dataset.属性名，获取值，属性名只能写小写。
+				let gIndex = e.currentTarget.dataset.gindex
+				console.log(gIndex)
 				// 构建动画数据，并且通过step 来表示这段动画的完成
 				this.animation.translateY(-56).opacity(1).step({
 					duration:400 // 动画持续时间，400ms
 				})
 				// 导出动画数据到 view 组件，实现组价你的动画效果
-				this.animationData = this.animation.export()
+				// this.animationData = this.animation.export()
+				this.animationData = this.animation
+				this.animationDataArr[gIndex] = this.animationData.export()
 				
 				// 动画执行600ms 之后，还原到之前的位置，
 				setTimeout(function() {
 					this.animation.translateY(0).opacity(0).step({
 						duration:0 // 动画持续时间，0ms
 					})
-					this.animationData = this.animation.export()
+					// this.animationData = this.animation.export()
+					this.animationData = this.animation
+					this.animationDataArr[gIndex] = this.animationData.export()
 				}.bind(this), 600);
 				
 			},

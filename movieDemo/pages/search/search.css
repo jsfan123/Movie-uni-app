@@ -1,0 +1,57 @@
+/* 搜索框 start */
+.search-block {
+	display: flex;
+	flex-direction: row;
+	padding: 0upx 20upx 20upx;
+	/* 固定搜索栏 */
+	position: fixed;
+	top: 100;
+	z-index: 200;
+	background-color: #F8F8F8;
+}
+.search-icon-wapper {
+	background-color: #eaeaea;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0upx 10upx;
+}
+.search-icon {
+	width: 40upx;
+	height: 40upx;
+}
+.search-text {
+	font-size: 14px;
+	background-color: #eaeaea;
+	height: 60upx;
+	width: 650upx;
+}
+/* 搜索框 end */
+
+/* 电影预告列表 start */
+.movie-list {
+	display: flex;
+	flex-direction: row;
+	padding: 10upx;
+	padding-top: 100upx;
+	flex-wrap: wrap;
+}
+.movie-wapper {
+	padding: 10upx 20upx;
+}
+.poster-img {
+	width: 200upx;
+	height: 270upx;
+	border-radius: 3%;
+}
+.movie-name {
+	width: 200upx;
+	margin-top: 10upx;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+/* 电影预告列表 start */
