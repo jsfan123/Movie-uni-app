@@ -1,0 +1,84 @@
+/* 搜索框 start */
+.search-block {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	padding: 0rpx 20rpx 20rpx;
+	/* 固定搜索栏 */
+	position: fixed;
+	top: 100;
+	z-index: 200;
+	background-color: #F8F8F8;
+}
+.search-icon-wapper {
+	background-color: #eaeaea;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	padding: 0rpx 10rpx;
+}
+.search-icon {
+	width: 40rpx;
+	height: 40rpx;
+}
+.search-text {
+	font-size: 14px;
+	background-color: #eaeaea;
+	height: 60rpx;
+	width: 650rpx;
+}
+/* 搜索框 end */
+/* 电影预告列表 start */
+.movie-list {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	padding: 10rpx;
+	padding-top: 100rpx;
+	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
+	        flex-wrap: wrap;
+}
+.movie-wapper {
+	padding: 10rpx 20rpx;
+}
+.poster-img {
+	width: 200rpx;
+	height: 270rpx;
+	border-radius: 3%;
+}
+.movie-name {
+	width: 200rpx;
+	margin-top: 10rpx;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+}
+/* 电影预告列表 start */
+

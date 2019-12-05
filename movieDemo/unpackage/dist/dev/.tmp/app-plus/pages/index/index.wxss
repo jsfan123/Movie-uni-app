@@ -1,0 +1,208 @@
+.carousel {
+	width: 100%;
+	/* height: 440upx; */
+}
+
+/* 热门电影 start */
+.super-hot {
+	margin-top: 12rpx;
+	padding: 20rpx;
+}
+
+/* 热门电影 标题栏 */
+.hot-title-wapper {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.hot-ico {
+	width: 30rpx;
+	height: 30rpx;
+}
+.hot-title {
+	font-size: 20px;
+	margin-left: 20rpx;
+	font-weight: bold;
+}
+
+/* 热门电影 scroll-view 组件 */
+.hot-scroll {
+	width: 100%;
+	white-space: nowrap;
+}
+.single-poster {
+	display: inline-block;
+	margin-left: 20rpx;
+}
+.single-poster:last-child {
+	margin-right: 20rpx;
+}
+.poster-wapper {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	padding-bottom: 20rpx;
+}
+.poster-img {
+	width: 200rpx;
+	height: 270rpx;
+}
+.movie-name {
+	width: 200rpx;
+	margin-top: 10rpx;
+	font-size: 14px;
+	font-weight: bold;
+	overflow: hidden;
+	white-space: nowrap;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+}
+
+/* 热门预告 start */
+.hot-movies {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	padding: 0rpx 20rpx 20rpx;
+}
+.hot-movie-single {
+	width: 350rpx;
+	height: 220rpx;
+	margin-top: 10rpx;
+}
+
+/* 热门预告 end */
+
+/* 猜你喜欢 start */
+.guess-u-like {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+.single-like-movie {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	padding: 30rpx 20rpx;
+}
+.like-moive {
+	width: 180rpx;
+	height: 240rpx;
+	border-radius: 3%;
+}
+.single-like-movie .movie-desc {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	width: 340rpx;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+.movie-title {
+	white-space: nowrap;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+	overflow: hidden;
+}
+.movie-info,
+.movie-releaseDate {
+	color: #808080;
+	font-size: 14px;
+	margin-top: 20rpx;
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:2;
+}
+
+/* 赞一下 */
+.movie-praise {
+	width: 140rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	border-left: dashed 2px #ececec;
+}
+.praise-ico {
+	width: 40rpx;
+	height: 40rpx;
+	-webkit-align-self: center;
+	    -ms-flex-item-align: center;
+	        align-self: center;
+}
+.praise-me {
+	font-weight: bold;
+	font-size: 14px;
+	color: #feab2a;
+	-webkit-align-self: center;
+	    -ms-flex-item-align: center;
+	        align-self: center;
+}
+.animation-opacity {
+	font-weight: bold;
+	opacity: 0;
+}
+
+/* 猜你喜欢 end */
+

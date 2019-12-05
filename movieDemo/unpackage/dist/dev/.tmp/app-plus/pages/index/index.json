@@ -1,0 +1,22 @@
+{
+  "enablePullDownRefresh": true,
+  "titleNView": false,
+  "pullToRefresh": {
+    "support": true,
+    "color": "#FEAB2A",
+    "style": "circle",
+    "offset": "50px",
+    "contentdown": {
+      "caption": "下拉可刷新自定义文本"
+    },
+    "contentover": {
+      "caption": "释放可刷新自定义文本"
+    },
+    "contentrefresh": {
+      "caption": "正在刷新自定义文本"
+    }
+  },
+  "usingComponents": {
+    "trailer-stars": "/components/trailerStars"
+  }
+}

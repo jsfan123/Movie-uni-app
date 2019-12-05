@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "search-input-coconfirm-type": "/pages/search/search-input-coconfirm-type"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/search/search",
+    "pages/me/me"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "电影预告",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#222222",
+    "selectedColor": "#FFA638",
+    "borderStyle": "black",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tabBarIcon/others_home.png",
+        "text": "首页",
+        "selectedIconPath": "static/tabBarIcon/index_home_active.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "iconPath": "static/tabBarIcon/others_info.png",
+        "text": "搜索",
+        "selectedIconPath": "static/tabBarIcon/news_info_active.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "iconPath": "static/tabBarIcon/others_self.png",
+        "text": "我的",
+        "selectedIconPath": "static/tabBarIcon/pc_self_active.png"
+      }
+    ]
+  },
+  "nvueCompiler": "uni-app",
+  "renderer": "auto",
+  "splashscreen": {
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
+  },
+  "appname": "movieDemo",
+  "compilerVersion": "2.4.2",
+  "usingComponents": {}
+}

@@ -8,6 +8,8 @@ module.exports = app => {
     // 引入 包装类 ResultInfo 用于数据返回规范
     const ResultInfo = require('../../entity/resultInfo')
 
+    // 引入自定义 工具 函数
+    const pagingFun = require('../../utils/tool')
 
     // 获取 首页轮播图 列表
     router.get('/index/banners/list', async (req, res) => {
@@ -56,6 +58,22 @@ module.exports = app => {
         }
         res.send(result)
     })
+
+
+    // 获取
+    router.get('/search/list', async(req,res)=>{
+        console.log(req.query)
+        let queryOptions = {}
+        if (req.query.search != '' && req.query.search != null) {
+            let reg = new RegExp(req.query.search,'i')
+            queryOptions.$or = [{
+                name: reg
+            }]
+        }
+        console.log(queryOptions)
+        pagingFun(req.query, queryOptions, Movie, res)
+    })
+
 
 
     app.use('/web/api', router)

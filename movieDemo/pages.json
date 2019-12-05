@@ -6,7 +6,22 @@
 				// 如果 h5 节，默认会使用 app-plus 下的配置。
 				// 配置了 h5 节点，则会覆盖 app-plus 下的配置。
 				"app-plus": {
-					"titleNView": false //禁用原生导航栏,小程序不能禁用
+					"titleNView": false, //禁用原生导航栏,小程序不能禁用
+					"pullToRefresh": {
+						"support": true,
+						"color": "#FEAB2A",
+						"style": "circle",
+						"offset":"50px",
+						"contentdown": {
+							"caption": "下拉可刷新自定义文本"
+						},
+						"contentover": {
+							"caption": "释放可刷新自定义文本"
+						},
+						"contentrefresh": {
+							"caption": "正在刷新自定义文本"
+						}
+					}
 				},
 				"enablePullDownRefresh":true // 开启下拉刷新
 			}
