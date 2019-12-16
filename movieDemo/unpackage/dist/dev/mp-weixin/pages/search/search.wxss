@@ -80,5 +80,13 @@
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
 }
-/* 电影预告列表 start */
+/* 列表 渲染结束提示 */
+.list-tip {
+	background: #fff;
+	text-align: center;
+	font-size: 15px;
+	color: #999;
+	padding: 10px 0;
+}
+/* 电影预告列表 end */
 

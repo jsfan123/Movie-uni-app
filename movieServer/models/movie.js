@@ -55,6 +55,10 @@ const MovieSchema = new mongoose.Schema({
     // 电影 情节描述
     plotDesc :{
         type:String
+    },
+    // 电影 点赞数
+    priseCounts:{
+        type:Number
     }
     
 },

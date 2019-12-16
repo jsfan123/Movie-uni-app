@@ -89,6 +89,27 @@ module.exports = app => {
 
     })
 
+    // 批量增加 某字段
+    router.get('/add/field', async (req, res) => {
+        // const result = await Movie.updateMany({},{$set:{priseCounts:Math.floor(Math.random()*200)}})
+        let model = await Movie.find()
+        model.forEach(async (item) => {
+            var score = ((Math.random() * 5)+5).toFixed(1)
+            console.log(score)
+            const result = await Movie.updateOne({
+                _id: item._id
+            }, {
+                $set: {
+                    score: score,
+                    priseCounts: Math.floor(Math.random() * 200)
+                }
+            })
+        })
+        model = await Movie.find()
+        res.send(model)
+    })
+
+
     // 获取首页轮播图列表
     router.post('/index/banners/list', async (req, res) => {
         console.log(req.params)

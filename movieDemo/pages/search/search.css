@@ -9,6 +9,7 @@
 	z-index: 200;
 	background-color: #F8F8F8;
 }
+
 .search-icon-wapper {
 	background-color: #eaeaea;
 	display: flex;
@@ -16,16 +17,19 @@
 	justify-content: center;
 	padding: 0upx 10upx;
 }
+
 .search-icon {
 	width: 40upx;
 	height: 40upx;
 }
+
 .search-text {
 	font-size: 14px;
 	background-color: #eaeaea;
 	height: 60upx;
 	width: 650upx;
 }
+
 /* 搜索框 end */
 
 /* 电影预告列表 start */
@@ -36,14 +40,17 @@
 	padding-top: 100upx;
 	flex-wrap: wrap;
 }
+
 .movie-wapper {
 	padding: 10upx 20upx;
 }
+
 .poster-img {
 	width: 200upx;
 	height: 270upx;
 	border-radius: 3%;
 }
+
 .movie-name {
 	width: 200upx;
 	margin-top: 10upx;
@@ -54,4 +61,14 @@
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
-/* 电影预告列表 start */
+
+/* 列表 渲染结束提示 */
+.list-tip {
+	background: #fff;
+	text-align: center;
+	font-size: 15px;
+	color: #999;
+	padding: 10px 0;
+}
+
+/* 电影预告列表 end */

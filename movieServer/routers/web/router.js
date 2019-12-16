@@ -60,7 +60,7 @@ module.exports = app => {
     })
 
 
-    // 获取
+    // 获取搜索结果，并分页展示
     router.get('/search/list', async(req,res)=>{
         console.log(req.query)
         let queryOptions = {}
@@ -73,6 +73,24 @@ module.exports = app => {
         console.log(queryOptions)
         pagingFun(req.query, queryOptions, Movie, res)
     })
+
+    // 根据 影片id 查询
+    router.get('/movie', async(req,res)=>{
+        console.log(req.query)
+        let result = new ResultInfo();
+        let query = req.query
+        try {
+            const model = await Movie.findById(query.id)
+            console.log(model)
+            result.data = model
+            result.message = "成功"
+        } catch (e) {
+            console.log(e)
+            result.message = "服务器异常"
+        }
+        res.send(result)
+    })
+    
 
 
 

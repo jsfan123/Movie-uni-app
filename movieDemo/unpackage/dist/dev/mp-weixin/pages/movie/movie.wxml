@@ -1,0 +1,1 @@
+<view class="page"><view class="player"><video class="movie" src poster="{{$root.m0}}" controls></video></view><view class="movie-info"><image src></image></view></view>

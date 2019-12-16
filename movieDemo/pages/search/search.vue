@@ -4,25 +4,25 @@
 			<view class="search-icon-wapper">
 				<image src="/../../static/icons/搜索.png" class="search-icon"></image>
 			</view>
-			<input 
-			type="text" 
-			placeholder="搜索预告" 
-			maxlength="15" 
-			v-model="paramsObj.search" 
-			class="search-text" 
-			confirm-type="next"
-			@confirm="searchMe"			
-			focus />
+			<input type="text" placeholder="搜索预告" maxlength="15" v-model="paramsObj.search" class="search-text" confirm-type="next"
+			 @confirm="searchMe" focus />
 		</view>
 
 		<view class="movie-list page-block">
-			<view v-for="movie in searchList" class="movie-wapper">
+			<view v-for="movie in searchList"
+			 @click="showTrailer(movie._id)"
+			 class="movie-wapper">
 				<image src="/static/movie/1.jpg" class="poster-img"></image>
 				<view class="movie-name">
 					{{ movie.name }}
 				</view>
 			</view>
 		</view>
+		<view class="list-tip" v-if="showListTip">
+			<view v-if="paramsObj.currentPage > 1">已经到底了...</view>
+			<view v-if="paramsObj.currentPage == 1">没有更多数据了...</view>
+		</view>
+
 	</view>
 </template>
 
@@ -31,23 +31,21 @@
 		data() {
 			return {
 				searchList: [],
-				paramsObj:{
-					currentPage: 1,		// 当前页
-					pageSize: 10,		// 页容量
-					search: "",			// 搜索关键字
+				paramsObj: {
+					currentPage: 1, // 当前页
+					pageSize: 10, // 页容量
+					search: "", // 搜索关键字
 				},
-				totalLength:0,  		// 总记录数
+				totalLength: 0, // 总记录数
+				showListTip:false, // 显示列表提示信息标记
 			}
 		},
 		onLoad() {
 			let _this = this;
-
-			
-
 			// 加载 paramsObj 表示 获取搜索页的默认数据,
-			_this.fetchSearchData(this.paramsObj,(res)=>{
+			_this.fetchSearchData(this.paramsObj, (res) => {
 				console.log(res.data)
-				if(res.data.statusCode == 200){
+				if (res.data.statusCode == 200) {
 					this.totalLength = res.data.count
 					this.searchList = res.data.data
 				}
@@ -59,13 +57,16 @@
 			let totalPage = Math.ceil(this.totalLength / this.paramsObj.pageSize)
 			console.log(totalPage)
 			// 如果当前页 大于了 总页数，则不再发送请求
-			if(currentPage > totalPage) {
+			if (currentPage > totalPage) {
+				setTimeout(()=>{
+					this.showListTip = true
+				},2000)
 				return
 			}
 			// 否则触发更新函数
-			this.fetchSearchData(this.paramsObj,(res)=>{
+			this.fetchSearchData(this.paramsObj, (res) => {
 				console.log(res.data)
-				if(res.data.statusCode == 200){
+				if (res.data.statusCode == 200) {
 					this.totalLength = res.data.count
 					this.searchList = this.searchList.concat(res.data.data)
 				}
@@ -94,18 +95,39 @@
 				});
 			},
 			// 点击 软键盘上的搜索时 触发
-			searchMe(e){
+			searchMe(e) {
 				let me = this;
 				// 清空 数据
 				me.searchList = []
+				me.showListTip = false
 				// 将 当前页置为 1
 				this.paramsObj.currentPage = 1
 				// 调用搜索函数
-				me.fetchSearchData(this.paramsObj,(res)=>{
+				me.fetchSearchData(this.paramsObj, (res) => {
 					console.log(res)
 					me.searchList = res.data.data
+					me.totalLength = res.data.count
+					let currentPage = this.paramsObj.currentPage
+					let totalPage = Math.ceil(this.totalLength / this.paramsObj.pageSize)
+					// 如果当前页 大于了 总页数，则不再发送请求
+					if (currentPage > totalPage) {
+						setTimeout(()=>{
+							this.showListTip = true
+						},1000)
+						return
+					}
 				})
-			}
+			},
+			// 点击跳转详情页面
+			showTrailer(trailerId){
+				console.log(trailerId)
+				// uni.switchTab({
+				// 	url:'../me/me'
+				// })
+				uni.navigateTo({
+					url:'../movie/movie?trailerId=' + trailerId
+				})
+			},
 		}
 	}
 </script>

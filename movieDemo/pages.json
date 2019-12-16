@@ -34,6 +34,13 @@
 			"path": "pages/me/me",
 			"style": {}
 		}
+        ,{
+            "path" : "pages/movie/movie",
+            "style" : {
+				"titleNView": false //禁用原生导航栏,小程序不能禁用
+			}
+			
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
