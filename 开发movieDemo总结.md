@@ -68,3 +68,8 @@ uni.hideNavigationBarLoading()
 
 ```
 
+## 1.5 如何将本地仓库代码与远程仓库代码同步
+- 只使用 `git pull` 命令是不行的。
+- 得先使用 `git fetch` 命令将本地库与远程库同步，
+- 再使用 `git pull` 命令将远程库的代码拉去到本地库。
+
