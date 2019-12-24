@@ -82,3 +82,23 @@
 }
 
 /* 影片基本信息 end */
+
+
+/* 剧情介绍  start */
+.plots-block{
+	background-color: #f7f4f9;
+	padding: 20upx 40upx;
+}
+
+.plots-title{
+	color: #a9a9a9;
+	font-size: 14px;
+}
+
+.plots-desc{
+	margin-top: 10upx;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+/* 剧情介绍  end */

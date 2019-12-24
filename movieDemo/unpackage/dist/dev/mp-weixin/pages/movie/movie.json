@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "titleNView": false,
+  "usingComponents": {
+    "trailer-stars": "/components/trailerStars"
+  }
 }

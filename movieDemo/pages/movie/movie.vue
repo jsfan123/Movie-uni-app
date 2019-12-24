@@ -33,7 +33,15 @@
 			</view>
 		</view>
 		
-		<!-- 影片基本信息 start -->
+		<!-- 影片基本信息 end -->
+		
+		<!-- 剧情介绍  start -->
+		<view class="plots-block">
+			<view class="plots-title">剧情介绍</view>
+			<view class="plots-desc">{{trailer.plotDesc}}</view>
+		</view>
+		<!-- 剧情介绍  start -->
+		
 	</view>
 </template>
 
@@ -50,6 +58,12 @@
 		onLoad(params) {
 			// 获取上一个页面传递的参数，params：是一个对象
 			this.trailerId = params.trailerId;
+			// 如果没有影片id 就跳回搜索页面
+			if(!this.trailerId){
+				uni.switchTab({
+					url: '../search/search'
+				});
+			}
 			this.fetchMovie()
 		},
 		methods: {
